@@ -11,9 +11,9 @@ public abstract class Employee {
     boolean isWorking;
     
     public Employee(String name, int number, boolean employed){
-        this.employeeName = name;
-        this.employeeId = number;
-        this.isWorking = employed;
+        employeeName = name;
+        employeeId = number;
+        isWorking = employed;
     }
     
     public String getName(){
