@@ -40,6 +40,12 @@ public abstract class Employee {
         this.isWorking = employed;
     }
     
+    public abstract double getPay();
+    
+    public String toString(){
+        return this.getName() + " " + this.getEmployeeId() + " " + this.isWorking();
+    }
+    
     
       
 }

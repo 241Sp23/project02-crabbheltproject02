@@ -23,6 +23,14 @@ public class StudentEmployee extends Employee{
         payRate = rate;
     }
     
+    public double getPay(){
+        return hoursWorked * payRate;
+    }
+    
+    public String toString(){
+        return super.toString() + " " + this.hoursWorked + " " + this.isWorkStudy + " " + this.payRate;
+    }
+    
     
     
 }

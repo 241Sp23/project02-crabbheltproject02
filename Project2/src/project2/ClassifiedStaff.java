@@ -14,7 +14,14 @@ public class ClassifiedStaff extends Employee {
         super(name, number, working);
         weeklySalary = salary;
         division = div;
-        
+    }
+    
+    public double getPay(){
+        return weeklySalary * 2;
+    }
+    
+    public String toString(){
+        return super.toString() + " " + this.weeklySalary + " " + this.division;
     }
     
     

@@ -16,6 +16,13 @@ public class Faculty extends Employee {
         annualSalary = salary;
         weeksPerYear = weeks;
         department = dept;
-        
+    }
+    
+    public double getPay(){
+        return (annualSalary * 2)/weeksPerYear;
+    }
+    
+    public String toString(){
+        return super.toString() + " " + this.annualSalary + " " + this.weeksPerYear + " " + this.department;
     }
 }
