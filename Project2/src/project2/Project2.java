@@ -3,18 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package project2;
+import java.io.*;
+import java.util.*;
 
-/**
- *
- * @author s550248
- */
 public class Project2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Employee[] workers = new Employee[11];
+        
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter the number of students in the file: ");
+        int studentsNum = input.nextInt();
+        
+        System.out.print("Enter the number of staff in the file: ");
+        int staffNum = input.nextInt();
+        
+        System.out.print("Enter the number of faculty in the file: ");
+        int facultyNum = input.nextInt();
+        
+        
+        
     }
     
 }
