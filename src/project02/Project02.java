@@ -69,5 +69,16 @@ public class Project02 {
         for (Employee worker : workers){
             System.out.println(worker);
         }
+        
+        System.out.println();
+        System.out.println("Pay for two-week pay period");
+        System.out.println("===========================");
+        for(Employee worker : workers){
+            if(worker.isWorking() == true){
+                System.out.print(worker.getName() + " ");
+                System.out.printf("$%.2f", worker.getPay());
+                System.out.println();
+            }
+        }
     }  
 }
