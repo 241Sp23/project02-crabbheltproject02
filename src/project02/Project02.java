@@ -6,6 +6,12 @@ import java.util.*;
 public class Project02 {
 
     public static void main(String[] args) throws FileNotFoundException {
+        String line = "";
+        BufferedReader csvReader = null;
+        Employee [] workers = new Employee[11];
+        int i = 0;
+
+        
         Scanner input = new Scanner(System.in);
         
         System.out.print("Enter the number of students in the file: ");
@@ -21,51 +27,55 @@ public class Project02 {
         System.out.print("Enter the name of the file: ");
         String inputFile = input.nextLine();
         
-        File file = new File(inputFile);
-        Scanner fileInput = new Scanner(file);
-        
-        Employee [] workers = new Employee[11];
-        
-        for(int i = 0; i < workers.length; i++){
-            if (i < numOfStudents){
-                String first = fileInput.next();
-                String last = fileInput.next();
-                String name = first + " " + last;
-                int number = fileInput.nextInt();
-                boolean working = fileInput.nextBoolean();
-                int hours = fileInput.nextInt();
-                boolean workStudy = fileInput.nextBoolean();
-                double rate = fileInput.nextDouble();
-                
-                workers[i] = new StudentEmployee(name, number, working, hours, workStudy, rate);
-            }
-            else if(i < numOfStudents + numOfStaff){
-                String first = fileInput.next();
-                String last = fileInput.next();
-                String name = first + " " + last;
-                int number = fileInput.nextInt();
-                boolean working = fileInput.nextBoolean();
-                double salary = fileInput.nextDouble();
-                String d1 = fileInput.next();
-                String d2 = fileInput.next();
-                String div = d1 + " " + d2;
+        try{
+            csvReader = new BufferedReader(new FileReader(inputFile));
+            while((line = csvReader.readLine()) != null){
+                String[] a = line.split(",");
+                if (i < numOfStudents){
+                    String name = a[0];
+                    int number = Integer.parseInt(a[1]);
+                    boolean working = Boolean.parseBoolean(a[2]);
+                    int hours = Integer.parseInt(a[3]);
+                    boolean workStudy = Boolean.parseBoolean(a[4]);
+                    double rate = Double.parseDouble(a[5]);
+                    workers[i] = new StudentEmployee(name, number, working, hours, workStudy, rate);
+                    i++;
+                    }
+                else if(i < numOfStudents + numOfStaff){
+                    String name = a[0];
+                    int number = Integer.parseInt(a[1]);
+                    boolean working = Boolean.parseBoolean(a[2]);
+                    double salary = Double.parseDouble(a[3]);
+                    String div = a[4];
                
-                workers[i] = new ClassifiedStaff(name, number, working, salary, div);
-            }
-            else{
-                String first = fileInput.next();
-                String last = fileInput.next();
-                String name = first + " " + last;
-                int number = fileInput.nextInt();
-                boolean working = fileInput.nextBoolean();
-                double salary = fileInput.nextInt();
-                int weeks = fileInput.nextInt();
-                String dept = fileInput.nextLine();
+                    workers[i] = new ClassifiedStaff(name, number, working, salary, div);
+                    i++;
+                    }
+                else{
+                    String name = a[0];
+                    int number = Integer.parseInt(a[1]);
+                    boolean working = Boolean.parseBoolean(a[2]);
+                    double salary = Double.parseDouble(a[3]);
+                    int weeks = Integer.parseInt(a[4]);
+                    String dept = a[5];
                
-                workers[i] = new Faculty(name, number, working, salary, weeks, dept);
+                    workers[i] = new Faculty(name, number, working, salary, weeks, dept);
+                    i++;
+                    }
             }
         }
-        
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        finally{
+            try {
+                csvReader.close();
+            } catch (IOException e) {
+               e.printStackTrace();
+            }
+        }
+
+        System.out.println();
         for (Employee worker : workers){
             System.out.println(worker);
         }
@@ -80,5 +90,6 @@ public class Project02 {
                 System.out.println();
             }
         }
-    }  
+     
+}
 }
