@@ -5,13 +5,14 @@ import java.util.*;
 
 public class Project02 {
 
+    //main method
     public static void main(String[] args) throws FileNotFoundException {
         String line = "";
         BufferedReader csvReader = null;
         Employee [] workers = new Employee[11];
         int i = 0;
 
-        
+        //Gather input from user
         Scanner input = new Scanner(System.in);
         
         System.out.print("Enter the number of students in the file: ");
@@ -27,6 +28,7 @@ public class Project02 {
         System.out.print("Enter the name of the file: ");
         String inputFile = input.nextLine();
         
+        //BufferedReader to read from csv file
         try{
             csvReader = new BufferedReader(new FileReader(inputFile));
             while((line = csvReader.readLine()) != null){
@@ -74,12 +76,14 @@ public class Project02 {
                e.printStackTrace();
             }
         }
-
+        
+        //print out worker
         System.out.println();
         for (Employee worker : workers){
             System.out.println(worker);
         }
         
+        //print out two week pay for worker if they are currently working
         System.out.println();
         System.out.println("Pay for two-week pay period");
         System.out.println("===========================");
