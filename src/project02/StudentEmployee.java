@@ -19,7 +19,7 @@ public class StudentEmployee extends Employee {
     }
     
     public String toString(){
-        return super.toString() + " " + this.hoursWorked + " " + this.isWorkStudy + " " + this.payRate;
+        return super.toString() + String.format("%" + 10 + "s", " " + this.hoursWorked + " " + this.isWorkStudy + " " + this.payRate);
     }
 }
 

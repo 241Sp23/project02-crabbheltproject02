@@ -38,7 +38,7 @@ public abstract class Employee {
     public abstract double getPay();
     
     public String toString(){
-        return this.getName() + " " + this.getEmployeeId() + " " + this.isWorking();
+        return String.format("%" + 10 + "s", this.getName() + " " + this.getEmployeeId() + " " + this.isWorking());
     }
 }
 
